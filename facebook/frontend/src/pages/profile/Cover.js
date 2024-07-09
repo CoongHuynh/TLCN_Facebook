@@ -1,12 +1,15 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Cropper from "react-easy-crop";
+import { useSelector } from "react-redux";
+import PulseLoader from "react-spinners/PulseLoader";
+
 import useClickOutside from "../../helpers/clickOutside";
 import getCroppedImg from "../../helpers/getCroppedImg";
+
 import { uploadImages } from "../../functions/uploadImages";
-import { useSelector } from "react-redux";
 import { updateCover } from "../../functions/user";
 import { createPost } from "../../functions/post";
-import PulseLoader from "react-spinners/PulseLoader";
+
 import OldCovers from "./OldCovers";
 
 export default function Cover({ cover, visitor, photos, setVisiblePhoto }) {

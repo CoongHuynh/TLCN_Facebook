@@ -1,7 +1,9 @@
 import { useRef, useState } from "react";
 import { useSelector } from "react-redux";
+
 import useClickOutside from "../../helpers/clickOutside";
 import PhotoMenu from "../../components/photo/PhotoMenu";
+
 export default function OldCovers({
   photos,
   setCoverPicture,

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 export default function Friends({ friends, idUser }) {
   return (
     <>
@@ -32,7 +33,10 @@ export default function Friends({ friends, idUser }) {
                 key={i}
               >
                 <img src={friend.picture} alt="" />
-                <span className="hover6" style={{fontSize: "14px" , fontWeight: "600"}}>
+                <span
+                  className="hover6"
+                  style={{ fontSize: "14px", fontWeight: "600" }}
+                >
                   {friend.first_name} {friend.last_name}
                 </span>
               </Link>

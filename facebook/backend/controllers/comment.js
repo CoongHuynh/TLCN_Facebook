@@ -55,10 +55,10 @@ exports.commentInComment = async (req, res) => {
 
 exports.getComment = async (req, res) => {
   try {
-    const comments = await Comment.find({ postRef: req.params.id , st: null}).populate(
-      "commentBy",
-      "picture first_name last_name id"
-    );
+    const comments = await Comment.find({
+      postRef: req.params.id,
+      st: null,
+    }).populate("commentBy", "picture first_name last_name id");
     comments.sort((a, b) => {
       return b.createdAt - a.createdAt;
     });
@@ -68,23 +68,25 @@ exports.getComment = async (req, res) => {
   }
 };
 
-
 exports.getCountCommentInPost = async (req, res) => {
   try {
     const postId = req.params.id;
     const commentCount = await getCommentCount(postId);
-    res.json(commentCount );
+    res.json(commentCount);
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
 };
 
 async function getCommentCount(postId) {
-  const comments = await Comment.find({ postRef: postId , st: null});
+  const comments = await Comment.find({ postRef: postId, st: null });
   let commentCount = comments.length;
 
   async function findNestedCommentCount(parentComment) {
-    const nestedComments = await Comment.find({ commentRef: parentComment._id  , st: null});
+    const nestedComments = await Comment.find({
+      commentRef: parentComment._id,
+      st: null,
+    });
     commentCount += nestedComments.length;
 
     for (const nestedComment of nestedComments) {
@@ -99,13 +101,9 @@ async function getCommentCount(postId) {
   return commentCount;
 }
 
-
-
-
-
 exports.getCommentInComment = async (req, res) => {
   try {
-    const comments = await Comment.find({ commentRef: req.params.id ,  st: null})
+    const comments = await Comment.find({ commentRef: req.params.id, st: null })
       .populate("commentBy", "picture first_name last_name id")
       .populate({
         path: "commentRef",

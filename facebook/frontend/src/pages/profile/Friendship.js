@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import useClickOutside from "../../helpers/clickOutside";
 import { useSelector } from "react-redux";
+
+import useClickOutside from "../../helpers/clickOutside";
+
 import {
   acceptRequest,
   addFriend,

@@ -1,24 +1,29 @@
 import axios from "axios";
 import { useEffect, useReducer, useRef, useState } from "react";
-import { useSelector } from "react-redux";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { profileReducer } from "../../functions/reducers";
-import { friendspage, friendspageByBirthday } from "../../functions/reducers";
-import Header from "../../components/header";
-import "./style.css";
-import Cover from "./Cover";
-import ProfielPictureInfos from "./ProfielPictureInfos";
-import ProfileMenu from "./ProfileMenu";
-import Friends from "./tabs/Friends";
-import CreatePostPopup from "../../components/createPostPopup";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import "./style.css";
+import { useSelector } from "react-redux";
+import { Link, useNavigate, useParams } from "react-router-dom";
+
+import { friendspage, friendspageByBirthday } from "../../functions/reducers";
+import { profileReducer } from "../../functions/reducers";
+
+import ProfielPictureInfos from "./ProfielPictureInfos";
+import ProfileMenu from "./ProfileMenu";
+import Cover from "./Cover";
+
+import Header from "../../components/header";
+import CreatePostPopup from "../../components/createPostPopup";
+
+import Friends from "./tabs/Friends";
 import Posts from "./tabs/Posts";
 import About from "./tabs/About";
 import Videos from "./tabs/Videos";
 import Photos from "./tabs/Photos";
 import Check_ins from "./tabs/Check_ins";
 import Detail_Albums from "./tabs/Detail_Albums";
+
 export default function Profile({
   getAllPosts,
   socket,
@@ -208,6 +213,7 @@ export default function Profile({
           profile
         />
       )}
+      
       <Header
         page="profile"
         getAllPosts={getAllPosts}

@@ -1,6 +1,6 @@
+import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Dots } from "../../svg";
-import { useState } from "react";
 const aboutSections = [
   "about",
   "about_overview",

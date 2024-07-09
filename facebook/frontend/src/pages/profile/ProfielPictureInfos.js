@@ -1,7 +1,9 @@
 import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
+
 import ProfilePicture from "../../components/profielPicture";
 import Friendship from "./Friendship";
-import { Link } from "react-router-dom";
+
 export default function ProfielPictureInfos({
   profile,
   visitor,
@@ -12,7 +14,7 @@ export default function ProfielPictureInfos({
   setVisiblePhoto,
   setShowChat,
   setShowChatRoom,
-  openChatWindow
+  openChatWindow,
 }) {
   const [show, setShow] = useState(false);
   const pRef = useRef(null);
