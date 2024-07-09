@@ -75,7 +75,6 @@ function App() {
   const [visiblePhotoDetail, setVisiblePhotoDetail] = useState(null);
 
   useEffect(() => {
-    
     if (user?.id !== undefined) {
       socket?.emit("newUser", user?.id);
       getDatafriendsByBirthday();
@@ -108,7 +107,7 @@ function App() {
       transports: ["websocket"],
     });
     setSocket(newSocket);
-   
+
     return () => {
       newSocket.disconnect();
     };
@@ -223,11 +222,14 @@ function App() {
       dispatchListPostSaved({
         type: "POSTSSAVED_REQUEST",
       });
-      const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getSavedPosts`, {
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      });
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/getSavedPosts`,
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
       dispatchListPostSaved({
         type: "POSTSSAVED_SUCCESS",
         payload: data,
@@ -317,11 +319,14 @@ function App() {
   const getRoomMess = async () => {
     try {
       dispatchRoomMess({ type: "ROOM_MESS_REQUEST" });
-      const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getRoomMess`, {
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      });
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/getRoomMess`,
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
       dispatchRoomMess({ type: "ROOM_MESS_SUCCESS", payload: data });
     } catch (error) {
       dispatchRoomMess({
@@ -334,11 +339,14 @@ function App() {
   const getPostGroups = async () => {
     try {
       dispatchPostGroups({ type: "POST_GROUPS_REQUEST" });
-      const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getpostgroups`, {
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      });
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/getpostgroups`,
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
       dispatchPostGroups({ type: "POST_GROUPS_SUCCESS", payload: data });
     } catch (error) {
       dispatchPostGroups({
@@ -508,11 +516,14 @@ function App() {
       dispatch({
         type: "POSTS_REQUEST",
       });
-      const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getAllposts`, {
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      });
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/getAllposts`,
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
       dispatch({
         type: "POSTS_SUCCESS",
         payload: data,
@@ -634,6 +645,7 @@ function App() {
         <ReportGroupMenu setReportGroup={setReportGroup} />
       )}
       {contextHolder}
+
       <Routes>
         <Route element={<LoggedInRoutes />}>
           <Route

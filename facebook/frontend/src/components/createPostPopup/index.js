@@ -167,7 +167,10 @@ export default function CreatePostPopup({
             />
           </>
         )}
-        <AddToYourPost setShowPrev={setShowPrev}  setBackground={setBackground}/>
+        <AddToYourPost
+          setShowPrev={setShowPrev}
+          setBackground={setBackground}
+        />
         <button
           className="post_submit"
           onClick={() => {
