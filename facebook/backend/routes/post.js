@@ -17,7 +17,7 @@ router.get("/getAllPosts", authUser, getAllPosts);
 router.put("/savePost/:id", authUser, savePost);
 router.delete("/deletePost/:id", authUser, deletePost);
 router.get("/getPost/:id", authUser, getPost);
-router.get("/getpostgroups", authUser, getpostgroups);
+// router.get("/getpostgroups", authUser, getpostgroups);
 router.post("/getPostByUrl", authUser, getPostByUrl);
 
 module.exports = router;

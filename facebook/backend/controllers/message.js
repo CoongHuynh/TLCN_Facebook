@@ -153,36 +153,36 @@ exports.updateSeenMess = async (req, res) => {
   }
 };
 
-exports.updateSeenMessInGroup = async (req, res) => {
-  try {
-    // Validation
-    const { roommessId } = req.body;
-    if (!roommessId) {
-      return res
-        .status(400)
-        .json({ error: "Missing roommessId in the request body" });
-    }
+// exports.updateSeenMessInGroup = async (req, res) => {
+//   try {
+//     // Validation
+//     const { roommessId } = req.body;
+//     if (!roommessId) {
+//       return res
+//         .status(400)
+//         .json({ error: "Missing roommessId in the request body" });
+//     }
 
-    // Update messages with the specified roommessId and mark the user as seen
-    await Message.updateMany(
-      {
-        roommessId: roommessId,
-      },
-      {
-        $push: { seen: req.user.id },
-      }
-    );
+//     // Update messages with the specified roommessId and mark the user as seen
+//     await Message.updateMany(
+//       {
+//         roommessId: roommessId,
+//       },
+//       {
+//         $push: { seen: req.user.id },
+//       }
+//     );
 
-    return res.status(200).json({
-      success: true,
-      message: "Messages updated successfully",
-      roommessId: roommessId,
-    });
-  } catch (error) {
-    console.error("Error updating messages:", error);
-    return res.status(500).json({ error: "Internal server error" });
-  }
-};
+//     return res.status(200).json({
+//       success: true,
+//       message: "Messages updated successfully",
+//       roommessId: roommessId,
+//     });
+//   } catch (error) {
+//     console.error("Error updating messages:", error);
+//     return res.status(500).json({ error: "Internal server error" });
+//   }
+// };
 
 exports.getMessages = async (req, res) => {
   try {

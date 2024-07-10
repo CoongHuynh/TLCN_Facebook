@@ -57,24 +57,24 @@ export const updateSeenMess = async (reseverId, token) => {
   }
 };
 
-export const updateSeenMessInGroup = async (roommessId, token) => {
-  try {
-    const { data } = await axios.put(
-      `${process.env.REACT_APP_BACKEND_URL}/updateSeenMessInGroup`,
-      {
-        roommessId,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-    return "ok";
-  } catch (error) {
-    return error.response.data.message;
-  }
-};
+// export const updateSeenMessInGroup = async (roommessId, token) => {
+//   try {
+//     const { data } = await axios.put(
+//       `${process.env.REACT_APP_BACKEND_URL}/updateSeenMessInGroup`,
+//       {
+//         roommessId,
+//       },
+//       {
+//         headers: {
+//           Authorization: `Bearer ${token}`,
+//         },
+//       }
+//     );
+//     return "ok";
+//   } catch (error) {
+//     return error.response.data.message;
+//   }
+// };
 
 export const sendMessageRoom = async (roommessId, message, image, token) => {
   try {
@@ -150,7 +150,6 @@ export const getReactsMess = async (messId, token) => {
     return error.response.data.message;
   }
 };
-
 
 export const getInfo = async (roommessId, token) => {
   try {

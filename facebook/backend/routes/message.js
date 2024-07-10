@@ -16,7 +16,7 @@ const router = express.Router();
 router.put("/sendMessage", authUser, sendMessage);
 router.get("/getMessages/:reseverId", authUser, getMessages);
 router.put("/updateSeenMess", authUser, updateSeenMess);
-router.put("/updateSeenMessInGroup", authUser, updateSeenMessInGroup);
+// router.put("/updateSeenMessInGroup", authUser, updateSeenMessInGroup);
 router.put("/sendMessageRoom", authUser, sendMessageRoom);
 router.get("/getMessagesRoom/:roommessId", authUser, getMessagesRoom);
 router.get("/getListRoomMess", authUser, getListRoomMess);

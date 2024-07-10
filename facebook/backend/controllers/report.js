@@ -39,86 +39,86 @@ exports.creatReport = async (req, res) => {
   }
 };
 
-exports.getReportsToGroup = async (req, res) => {
-  try {
-    const idgroup = req.params.idgroup;
-    const reports = await Report.find({
-      groupRef: idgroup,
-      to: "adminGroup",
-      st: null,
-    })
-      .populate({
-        path: "postRef",
-        select: "type text images background group user type createdAt",
-        populate: {
-          path: "user",
-          select: "first_name last_name picture id",
-        },
-      })
-      .populate("userRef", "first_name last_name id email")
-      .populate({
-        path: "commentRef",
-        select: "comment image commentAt",
-        populate: {
-          path: "commentBy",
-          select: "first_name last_name picture id",
-        },
-      });
+// exports.getReportsToGroup = async (req, res) => {
+//   try {
+//     const idgroup = req.params.idgroup;
+//     const reports = await Report.find({
+//       groupRef: idgroup,
+//       to: "adminGroup",
+//       st: null,
+//     })
+//       .populate({
+//         path: "postRef",
+//         select: "type text images background group user type createdAt",
+//         populate: {
+//           path: "user",
+//           select: "first_name last_name picture id",
+//         },
+//       })
+//       .populate("userRef", "first_name last_name id email")
+//       .populate({
+//         path: "commentRef",
+//         select: "comment image commentAt",
+//         populate: {
+//           path: "commentBy",
+//           select: "first_name last_name picture id",
+//         },
+//       });
 
-    reports.sort((a, b) => {
-      return b.createdAt - a.createdAt;
-    });
+//     reports.sort((a, b) => {
+//       return b.createdAt - a.createdAt;
+//     });
 
-    // Now, `reports` contains the populated data with the desired fields from the "user" reference.
-    res.status(200).json(reports);
-  } catch (error) {
-    console.error("Error getting reports:", error);
-    res.status(500).json({ message: "Internal Server Error" });
-  }
-};
-exports.getReportsToAdmin = async (req, res) => {
-  try {
-    const reports = await Report.find({
-      to: "adminFacebook",
-    })
-      .populate({
-        path: "postRef",
-        select: "type text images background group user type createdAt",
-        populate: {
-          path: "user",
-          select: "first_name last_name picture id",
-        },
-      })
-      .populate("userRef", "first_name last_name id email")
-      .populate({
-        path: "commentRef",
-        select: "comment image commentAt",
-        populate: {
-          path: "commentBy",
-          select: "first_name last_name picture id",
-        },
-      })
-      .populate("groupReportedRef", "group_name cover id ")
-      .populate({
-        path: "userReportedRef",
-        select: "first_name last_name id email friends",
-        populate: {
-          path: "friends",
-          select: "first_name last_name picture id",
-        },
-      });
+//     // Now, `reports` contains the populated data with the desired fields from the "user" reference.
+//     res.status(200).json(reports);
+//   } catch (error) {
+//     console.error("Error getting reports:", error);
+//     res.status(500).json({ message: "Internal Server Error" });
+//   }
+// };
+// exports.getReportsToAdmin = async (req, res) => {
+//   try {
+//     const reports = await Report.find({
+//       to: "adminFacebook",
+//     })
+//       .populate({
+//         path: "postRef",
+//         select: "type text images background group user type createdAt",
+//         populate: {
+//           path: "user",
+//           select: "first_name last_name picture id",
+//         },
+//       })
+//       .populate("userRef", "first_name last_name id email")
+//       .populate({
+//         path: "commentRef",
+//         select: "comment image commentAt",
+//         populate: {
+//           path: "commentBy",
+//           select: "first_name last_name picture id",
+//         },
+//       })
+//       .populate("groupReportedRef", "group_name cover id ")
+//       .populate({
+//         path: "userReportedRef",
+//         select: "first_name last_name id email friends",
+//         populate: {
+//           path: "friends",
+//           select: "first_name last_name picture id",
+//         },
+//       });
 
-    reports.sort((a, b) => {
-      return b.createdAt - a.createdAt;
-    });
+//     reports.sort((a, b) => {
+//       return b.createdAt - a.createdAt;
+//     });
 
-    // Now, `reports` contains the populated data with the desired fields from the "user" reference.
-    res.status(200).json(reports);
-  } catch (error) {
-    console.error("Error getting reports:", error);
-    res.status(500).json({ message: "Internal Server Error" });
-  }
-};
+//     // Now, `reports` contains the populated data with the desired fields from the "user" reference.
+//     res.status(200).json(reports);
+//   } catch (error) {
+//     console.error("Error getting reports:", error);
+//     res.status(500).json({ message: "Internal Server Error" });
+//   }
+// };
 exports.keepReport = async (req, res) => {
   try {
     const { idreport } = req.body;
@@ -181,7 +181,8 @@ exports.getReportById = async (req, res) => {
 
 exports.removeReport = async (req, res) => {
   try {
-    const { postRef, idreport, commentRef ,userReportedRef , groupReportedRef } = req.body;
+    const { postRef, idreport, commentRef, userReportedRef, groupReportedRef } =
+      req.body;
     if (postRef) {
       await Post.findByIdAndUpdate(postRef, { st: "delete" });
     }
@@ -201,7 +202,3 @@ exports.removeReport = async (req, res) => {
     res.status(500).json({ message: "Internal Server Error" });
   }
 };
-
-
-
-

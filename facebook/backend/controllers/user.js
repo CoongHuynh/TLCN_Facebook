@@ -99,9 +99,8 @@ exports.activateAccount = async (req, res) => {
   try {
     const validUser = req.user.id;
     const { token } = req.body;
-    const user =  jwt.verify(token, process.env.TOKEN_SECRET);
+    const user = jwt.verify(token, process.env.TOKEN_SECRET);
     const check = await User.findById(user.id);
-
     if (validUser !== user.id) {
       return res.status(400).json({
         message: "You don't have the authorization to complete this operation.",
@@ -143,7 +142,7 @@ exports.login = async (req, res) => {
       });
     }
     const token = generateToken({ id: user._id.toString() }, "7d");
-
+    console.log(">>>token:", token);
     res.send({
       id: user._id,
       picture: user.picture,
@@ -245,7 +244,7 @@ exports.validateResetCode = async (req, res) => {
 exports.validateVerifiCode = async (req, res) => {
   try {
     const { email, code, type } = req.body;
-    
+
     // Check if the user exists
     const user = await User.findOne({ email: email });
     if (!user) {
@@ -259,7 +258,9 @@ exports.validateVerifiCode = async (req, res) => {
     }
 
     // Check if the entered code matches any of the codes in the database
-    const correctCode = verificationCodes.find((dbCode) => dbCode.code === code);
+    const correctCode = verificationCodes.find(
+      (dbCode) => dbCode.code === code
+    );
     if (!correctCode) {
       return res.status(400).json({
         message: "Verification code is wrong.",
@@ -283,7 +284,6 @@ exports.validateVerifiCode = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-
 
 exports.changePassword = async (req, res) => {
   const { email, password } = req.body;
@@ -1074,4 +1074,3 @@ exports.getSavedPosts = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
-

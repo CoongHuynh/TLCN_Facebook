@@ -276,14 +276,15 @@ function App() {
     error: "",
   });
   console.log(dataFriend);
-  const [
-    { loading: groupsLoading, error: groupsError, dataGroups },
-    dispatchGroups,
-  ] = useReducer(groupspage, {
-    loading: false,
-    dataGroups: [],
-    error: "",
-  });
+
+  // const [
+  //   { loading: groupsLoading, error: groupsError, dataGroups },
+  //   dispatchGroups,
+  // ] = useReducer(groupspage, {
+  //   loading: false,
+  //   dataGroups: [],
+  //   error: "",
+  // });
 
   const [
     {
@@ -336,56 +337,56 @@ function App() {
     }
   };
 
-  const getPostGroups = async () => {
-    try {
-      dispatchPostGroups({ type: "POST_GROUPS_REQUEST" });
-      const { data } = await axios.get(
-        `${process.env.REACT_APP_BACKEND_URL}/getpostgroups`,
-        {
-          headers: {
-            Authorization: `Bearer ${user.token}`,
-          },
-        }
-      );
-      dispatchPostGroups({ type: "POST_GROUPS_SUCCESS", payload: data });
-    } catch (error) {
-      dispatchPostGroups({
-        type: "POST_GROUPS_ERROR",
-        payload: groupsError?.response.data.message,
-      });
-    }
-  };
+  // const getPostGroups = async () => {
+  //   try {
+  //     dispatchPostGroups({ type: "POST_GROUPS_REQUEST" });
+  //     const { data } = await axios.get(
+  //       `${process.env.REACT_APP_BACKEND_URL}/getpostgroups`,
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${user.token}`,
+  //         },
+  //       }
+  //     );
+  //     dispatchPostGroups({ type: "POST_GROUPS_SUCCESS", payload: data });
+  //   } catch (error) {
+  //     dispatchPostGroups({
+  //       type: "POST_GROUPS_ERROR",
+  //       payload: groupsError?.response.data.message,
+  //     });
+  //   }
+  // };
 
-  const getGroups = async () => {
-    dispatchGroups({ type: "GROUPS_REQUEST" });
-    const data = await getGroupsJoined(user?.token);
-    console.log(data);
-    if (data.status === "ok") {
-      dispatchGroups({ type: "GROUPS_SUCCESS", payload: data.data });
-    } else {
-      dispatchGroups({
-        type: "GROUPS_ERROR",
-        payload: groupsError.response.data.message,
-      });
-    }
-  };
+  // const getGroups = async () => {
+  //   dispatchGroups({ type: "GROUPS_REQUEST" });
+  //   const data = await getGroupsJoined(user?.token);
+  //   console.log(data);
+  //   if (data.status === "ok") {
+  //     dispatchGroups({ type: "GROUPS_SUCCESS", payload: data.data });
+  //   } else {
+  //     dispatchGroups({
+  //       type: "GROUPS_ERROR",
+  //       payload: groupsError.response.data.message,
+  //     });
+  //   }
+  // };
 
-  const getDiscoverGroups = async () => {
-    dispatchDiscoverGroups({ type: "DISCOVER_GROUPS_REQUEST" });
-    const data = await getdiscoverGroups(user?.token);
-    console.log(data);
-    if (data.status === "ok") {
-      dispatchDiscoverGroups({
-        type: "DISCOVER_GROUPS_SUCCESS",
-        payload: data.data,
-      });
-    } else {
-      dispatchDiscoverGroups({
-        type: "DISCOVER_GROUPS_ERROR",
-        payload: groupsError.response.data.message,
-      });
-    }
-  };
+  // const getDiscoverGroups = async () => {
+  //   dispatchDiscoverGroups({ type: "DISCOVER_GROUPS_REQUEST" });
+  //   const data = await getdiscoverGroups(user?.token);
+  //   console.log(data);
+  //   if (data.status === "ok") {
+  //     dispatchDiscoverGroups({
+  //       type: "DISCOVER_GROUPS_SUCCESS",
+  //       payload: data.data,
+  //     });
+  //   } else {
+  //     dispatchDiscoverGroups({
+  //       type: "DISCOVER_GROUPS_ERROR",
+  //       payload: groupsError.response.data.message,
+  //     });
+  //   }
+  // };
 
   const getDataFriend = async () => {
     dispatchFriends({ type: "FRIENDS_REQUEST" });
@@ -627,12 +628,12 @@ function App() {
         </>
       )}
       {report && <ReportMenu setReport={setReport} report={report} />}
-      {reportGroup && (
+      {/* {reportGroup && (
         <ReportGroupMenu
           setReportGroup={setReportGroup}
           reportGroup={reportGroup}
         />
-      )}
+      )} */}
       {report_Profile && (
         <ReportMenu_Profile
           setReport_Profile={setReport_Profile}
@@ -641,9 +642,9 @@ function App() {
       )}
 
       {reportComment && <ReportMenu setReport={setReport} />}
-      {reportGroupComment && (
+      {/* {reportGroupComment && (
         <ReportGroupMenu setReportGroup={setReportGroup} />
-      )}
+      )} */}
       {contextHolder}
 
       <Routes>
@@ -1053,7 +1054,7 @@ function App() {
             }
             exact
           />
-          <Route
+          {/* <Route
             path="/groups"
             element={
               <Groups
@@ -1269,7 +1270,7 @@ function App() {
               />
             }
             exact
-          />
+          /> */}
           <Route
             path="/"
             element={
