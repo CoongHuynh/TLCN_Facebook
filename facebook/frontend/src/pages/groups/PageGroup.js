@@ -66,7 +66,6 @@ export default function PageGroup({
   getRoomMess,
   setReportGroup,
   setReport,
-  
 }) {
   const { user } = useSelector((state) => ({ ...state }));
   const menu = useRef(null);
@@ -371,7 +370,10 @@ export default function PageGroup({
                         <img src={dataPageGroup?.cover} alt="" />
                       </Link>
                       <div>
-                        <Link  to={`/group/${dataPageGroup?._id}`} className="req_name hover6">
+                        <Link
+                          to={`/group/${dataPageGroup?._id}`}
+                          className="req_name hover6"
+                        >
                           {dataPageGroup?.group_name}
                         </Link>
                         <div
@@ -601,7 +603,9 @@ export default function PageGroup({
                       {overview.includes(sk) ? (
                         <>
                           <Home />
-                          <p style={{ color: "var(--color-primary)"}}>Communnity home</p>
+                          <p style={{ color: "var(--color-primary)" }}>
+                            Communnity home
+                          </p>
                         </>
                       ) : (
                         <>
@@ -682,7 +686,9 @@ export default function PageGroup({
                       {overview.includes(sk) ? (
                         <>
                           <Home />
-                          <p style={{  color: "var(--color-primary)"}}>Communnity home</p>
+                          <p style={{ color: "var(--color-primary)" }}>
+                            Communnity home
+                          </p>
                         </>
                       ) : (
                         <>
@@ -708,7 +714,9 @@ export default function PageGroup({
                       ) : (
                         <>
                           <i className="overview_icon"></i>
-                          <p style={{  color: "var(--color-primary)" }}>Overview </p>
+                          <p style={{ color: "var(--color-primary)" }}>
+                            Overview{" "}
+                          </p>
                         </>
                       )}
                     </Link>
@@ -746,7 +754,7 @@ export default function PageGroup({
                       ) : (
                         <>
                           {" "}
-                          <p style={{  color: "var(--color-primary)" }}>
+                          <p style={{ color: "var(--color-primary)" }}>
                             Member-reported content{" "}
                           </p>
                         </>
@@ -784,7 +792,9 @@ export default function PageGroup({
                       ) : (
                         <>
                           {" "}
-                          <p style={{  color: "var(--color-primary)" }}>Member requests </p>
+                          <p style={{ color: "var(--color-primary)" }}>
+                            Member requests{" "}
+                          </p>
                         </>
                       )}
                     </Link>
@@ -821,7 +831,9 @@ export default function PageGroup({
                       ) : (
                         <>
                           {" "}
-                          <p style={{  color: "var(--color-primary)"}}>Pending posts </p>
+                          <p style={{ color: "var(--color-primary)" }}>
+                            Pending posts{" "}
+                          </p>
                         </>
                       )}
                     </Link>
@@ -856,7 +868,9 @@ export default function PageGroup({
                       ) : (
                         <>
                           {" "}
-                          <p style={{  color: "var(--color-primary)" }}>Moderation alerts </p>
+                          <p style={{ color: "var(--color-primary)" }}>
+                            Moderation alerts{" "}
+                          </p>
                         </>
                       )}
                     </Link>
@@ -893,7 +907,9 @@ export default function PageGroup({
                       ) : (
                         <>
                           {" "}
-                          <p style={{  color: "var(--color-primary)" }}>Group settings</p>
+                          <p style={{ color: "var(--color-primary)" }}>
+                            Group settings
+                          </p>
                         </>
                       )}
                     </Link>

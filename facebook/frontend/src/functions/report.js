@@ -30,21 +30,21 @@ export const creatReport = async (
   }
 };
 
-// export const getReportsToGroup = async (idgroup, token) => {
-//   try {
-//     const { data } = await axios.get(
-//       `${process.env.REACT_APP_BACKEND_URL}/getReportsToGroup/${idgroup}`,
-//       {
-//         headers: {
-//           Authorization: `Bearer ${token}`,
-//         },
-//       }
-//     );
-//     return data;
-//   } catch (error) {
-//     return error.response.data.message;
-//   }
-// };
+export const getReportsToGroup = async (idgroup, token) => {
+  try {
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_BACKEND_URL}/getReportsToGroup/${idgroup}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return data;
+  } catch (error) {
+    return error.response.data.message;
+  }
+};
 
 export const keepReport = async (idreport, token) => {
   try {

@@ -81,9 +81,9 @@ function App() {
       getAllPosts();
       getListPostSaved();
       getDataFriend();
-      getGroups();
-      getDiscoverGroups();
-      getPostGroups();
+      // getGroups();
+      // getDiscoverGroups();
+      // getPostGroups();
       getRoomMess();
       getNotifications();
       getListMess();
@@ -286,18 +286,18 @@ function App() {
   //   error: "",
   // });
 
-  const [
-    {
-      loading: discoverGroupsLoading,
-      error: discoverGroupsError,
-      dataDiscoverGroups,
-    },
-    dispatchDiscoverGroups,
-  ] = useReducer(groupdiscoverspage, {
-    loading: false,
-    dataDiscoverGroups: [],
-    error: "",
-  });
+  // const [
+  //   {
+  //     loading: discoverGroupsLoading,
+  //     error: discoverGroupsError,
+  //     dataDiscoverGroups,
+  //   },
+  //   dispatchDiscoverGroups,
+  // ] = useReducer(groupdiscoverspage, {
+  //   loading: false,
+  //   dataDiscoverGroups: [],
+  //   error: "",
+  // });
 
   const [
     { loading: postGroupsLoading, error: postGroupsError, dataPostGroups },
@@ -1320,7 +1320,7 @@ function App() {
                 onlineUsers={onlineUsers}
                 openChatWindow={openChatWindow}
                 setOpenChatWindows={setOpenChatWindows}
-                getGroups={getGroups}
+                // getGroups={getGroups}
               />
             }
             exact
@@ -1339,7 +1339,7 @@ function App() {
                 onlineUsers={onlineUsers}
                 openChatWindow={openChatWindow}
                 setOpenChatWindows={setOpenChatWindows}
-                getGroups={getGroups}
+                // getGroups={getGroups}
               />
             }
             exact
