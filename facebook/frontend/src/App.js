@@ -53,6 +53,7 @@ import PhotoPopup from "./components/photoPopup";
 import Chat_screen from "./components/chat";
 import Saved from "./pages/saved";
 import VerifiRegister from "./pages/verify/VerifiRegister";
+
 function App() {
   const [visible, setVisible] = useState(false);
   const [visiblePost, setVisiblePost] = useState(null);
@@ -277,27 +278,6 @@ function App() {
   });
   console.log(dataFriend);
 
-  // const [
-  //   { loading: groupsLoading, error: groupsError, dataGroups },
-  //   dispatchGroups,
-  // ] = useReducer(groupspage, {
-  //   loading: false,
-  //   dataGroups: [],
-  //   error: "",
-  // });
-
-  // const [
-  //   {
-  //     loading: discoverGroupsLoading,
-  //     error: discoverGroupsError,
-  //     dataDiscoverGroups,
-  //   },
-  //   dispatchDiscoverGroups,
-  // ] = useReducer(groupdiscoverspage, {
-  //   loading: false,
-  //   dataDiscoverGroups: [],
-  //   error: "",
-  // });
 
   const [
     { loading: postGroupsLoading, error: postGroupsError, dataPostGroups },
@@ -337,56 +317,6 @@ function App() {
     }
   };
 
-  // const getPostGroups = async () => {
-  //   try {
-  //     dispatchPostGroups({ type: "POST_GROUPS_REQUEST" });
-  //     const { data } = await axios.get(
-  //       `${process.env.REACT_APP_BACKEND_URL}/getpostgroups`,
-  //       {
-  //         headers: {
-  //           Authorization: `Bearer ${user.token}`,
-  //         },
-  //       }
-  //     );
-  //     dispatchPostGroups({ type: "POST_GROUPS_SUCCESS", payload: data });
-  //   } catch (error) {
-  //     dispatchPostGroups({
-  //       type: "POST_GROUPS_ERROR",
-  //       payload: groupsError?.response.data.message,
-  //     });
-  //   }
-  // };
-
-  // const getGroups = async () => {
-  //   dispatchGroups({ type: "GROUPS_REQUEST" });
-  //   const data = await getGroupsJoined(user?.token);
-  //   console.log(data);
-  //   if (data.status === "ok") {
-  //     dispatchGroups({ type: "GROUPS_SUCCESS", payload: data.data });
-  //   } else {
-  //     dispatchGroups({
-  //       type: "GROUPS_ERROR",
-  //       payload: groupsError.response.data.message,
-  //     });
-  //   }
-  // };
-
-  // const getDiscoverGroups = async () => {
-  //   dispatchDiscoverGroups({ type: "DISCOVER_GROUPS_REQUEST" });
-  //   const data = await getdiscoverGroups(user?.token);
-  //   console.log(data);
-  //   if (data.status === "ok") {
-  //     dispatchDiscoverGroups({
-  //       type: "DISCOVER_GROUPS_SUCCESS",
-  //       payload: data.data,
-  //     });
-  //   } else {
-  //     dispatchDiscoverGroups({
-  //       type: "DISCOVER_GROUPS_ERROR",
-  //       payload: groupsError.response.data.message,
-  //     });
-  //   }
-  // };
 
   const getDataFriend = async () => {
     dispatchFriends({ type: "FRIENDS_REQUEST" });
@@ -1054,223 +984,7 @@ function App() {
             }
             exact
           />
-          {/* <Route
-            path="/groups"
-            element={
-              <Groups
-                getGroups={getGroups}
-                getDiscoverGroups={getDiscoverGroups}
-                getAllPosts={getAllPosts}
-                socket={socket}
-                notifications={notifications}
-                setNotifi={setNotifi}
-                dataFriend={dataFriend}
-                getDataFriend={getDataFriend}
-                friendsLoading={friendsLoading}
-                getNotifications={getNotifications}
-                setVisible={setVisible}
-                setVisiblePost={setVisiblePost}
-                visibleReact={visibleReact}
-                setVisibleReact={setVisibleReact}
-                setVisibleReactComment={setVisibleReactComment}
-                visibleReactComment={visibleReactComment}
-                postGroupsLoading={postGroupsLoading}
-                dataPostGroups={dataPostGroups}
-                groupsLoading={groupsLoading}
-                discoverGroupsLoading={discoverGroupsLoading}
-                dataDiscoverGroups={dataDiscoverGroups}
-                dataGroups={dataGroups}
-                setVisiblePhoto={setVisiblePhoto}
-                getListMess={getListMess}
-                listMess={listMess}
-                onlineUsers={onlineUsers}
-                openChatWindow={openChatWindow}
-                setOpenChatWindows={setOpenChatWindows}
-                User={User}
-                getUserData={getUserData}
-                setReportGroup={setReportGroup}
-                setReport={setReport}
-              />
-            }
-            exact
-          />
-          <Route
-            path="/groups/:type"
-            element={
-              <Groups
-                getGroups={getGroups}
-                getDiscoverGroups={getDiscoverGroups}
-                getAllPosts={getAllPosts}
-                socket={socket}
-                notifications={notifications}
-                setNotifi={setNotifi}
-                dataFriend={dataFriend}
-                getDataFriend={getDataFriend}
-                friendsLoading={friendsLoading}
-                getNotifications={getNotifications}
-                setVisible={setVisible}
-                setVisiblePost={setVisiblePost}
-                visibleReact={visibleReact}
-                setVisibleReact={setVisibleReact}
-                setVisibleReactComment={setVisibleReactComment}
-                visibleReactComment={visibleReactComment}
-                postGroupsLoading={postGroupsLoading}
-                dataPostGroups={dataPostGroups}
-                groupsLoading={groupsLoading}
-                discoverGroupsLoading={discoverGroupsLoading}
-                dataDiscoverGroups={dataDiscoverGroups}
-                dataGroups={dataGroups}
-                setVisiblePhoto={setVisiblePhoto}
-                getListMess={getListMess}
-                listMess={listMess}
-                onlineUsers={onlineUsers}
-                openChatWindow={openChatWindow}
-                setOpenChatWindows={setOpenChatWindows}
-                dataRoomMess={dataRoomMess}
-                User={User}
-                getUserData={getUserData}
-                setReportGroup={setReportGroup}
-                setReport={setReport}
-              />
-            }
-            exact
-          />
-          <Route
-            path="/group/:idgroup/:sk/album=:album"
-            element={
-              <PageGroup
-                getAllPosts={getAllPosts}
-                socket={socket}
-                notifications={notifications}
-                setNotifi={setNotifi}
-                dataFriend={dataFriend}
-                getDataFriend={getDataFriend}
-                friendsLoading={friendsLoading}
-                getNotifications={getNotifications}
-                setVisible={setVisible}
-                setVisiblePost={setVisiblePost}
-                visibleReact={visibleReact}
-                setVisibleReact={setVisibleReact}
-                setVisibleReactComment={setVisibleReactComment}
-                visibleReactComment={visibleReactComment}
-                getGroups={getGroups}
-                getDiscoverGroups={getDiscoverGroups}
-                setVisiblePhoto={setVisiblePhoto}
-                getListMess={getListMess}
-                listMess={listMess}
-                onlineUsers={onlineUsers}
-                openChatWindow={openChatWindow}
-                setOpenChatWindows={setOpenChatWindows}
-                dataRoomMess={dataRoomMess}
-                getRoomMess={getRoomMess}
-                setReportGroup={setReportGroup}
-                setReport={setReport}
-              />
-            }
-            exact
-          />
-          <Route
-            path="/group/:idgroup/:sk/:type"
-            element={
-              <PageGroup
-                getAllPosts={getAllPosts}
-                socket={socket}
-                notifications={notifications}
-                setNotifi={setNotifi}
-                dataFriend={dataFriend}
-                getDataFriend={getDataFriend}
-                friendsLoading={friendsLoading}
-                getNotifications={getNotifications}
-                setVisible={setVisible}
-                setVisiblePost={setVisiblePost}
-                visibleReact={visibleReact}
-                setVisibleReact={setVisibleReact}
-                setVisibleReactComment={setVisibleReactComment}
-                visibleReactComment={visibleReactComment}
-                getGroups={getGroups}
-                getDiscoverGroups={getDiscoverGroups}
-                setVisiblePhoto={setVisiblePhoto}
-                getListMess={getListMess}
-                listMess={listMess}
-                onlineUsers={onlineUsers}
-                openChatWindow={openChatWindow}
-                setOpenChatWindows={setOpenChatWindows}
-                dataRoomMess={dataRoomMess}
-                getRoomMess={getRoomMess}
-                setReportGroup={setReportGroup}
-                setReport={setReport}
-              />
-            }
-            exact
-          />
-          <Route
-            path="/group/:idgroup/:sk"
-            element={
-              <PageGroup
-                getAllPosts={getAllPosts}
-                socket={socket}
-                notifications={notifications}
-                setNotifi={setNotifi}
-                dataFriend={dataFriend}
-                getDataFriend={getDataFriend}
-                friendsLoading={friendsLoading}
-                getNotifications={getNotifications}
-                setVisible={setVisible}
-                setVisiblePost={setVisiblePost}
-                visibleReact={visibleReact}
-                setVisibleReact={setVisibleReact}
-                setVisibleReactComment={setVisibleReactComment}
-                visibleReactComment={visibleReactComment}
-                getGroups={getGroups}
-                getDiscoverGroups={getDiscoverGroups}
-                setVisiblePhoto={setVisiblePhoto}
-                getListMess={getListMess}
-                listMess={listMess}
-                onlineUsers={onlineUsers}
-                openChatWindow={openChatWindow}
-                setOpenChatWindows={setOpenChatWindows}
-                dataRoomMess={dataRoomMess}
-                getRoomMess={getRoomMess}
-                setReportGroup={setReportGroup}
-                setReport={setReport}
-              />
-            }
-            exact
-          />
-          <Route
-            path="/group/:idgroup"
-            element={
-              <PageGroup
-                getAllPosts={getAllPosts}
-                socket={socket}
-                notifications={notifications}
-                setNotifi={setNotifi}
-                dataFriend={dataFriend}
-                getDataFriend={getDataFriend}
-                friendsLoading={friendsLoading}
-                getNotifications={getNotifications}
-                setVisible={setVisible}
-                setVisiblePost={setVisiblePost}
-                visibleReact={visibleReact}
-                setVisibleReact={setVisibleReact}
-                setVisibleReactComment={setVisibleReactComment}
-                visibleReactComment={visibleReactComment}
-                getGroups={getGroups}
-                getDiscoverGroups={getDiscoverGroups}
-                setVisiblePhoto={setVisiblePhoto}
-                getListMess={getListMess}
-                listMess={listMess}
-                onlineUsers={onlineUsers}
-                openChatWindow={openChatWindow}
-                setOpenChatWindows={setOpenChatWindows}
-                dataRoomMess={dataRoomMess}
-                getRoomMess={getRoomMess}
-                setReportGroup={setReportGroup}
-                setReport={setReport}
-              />
-            }
-            exact
-          /> */}
+        
           <Route
             path="/"
             element={
@@ -1320,7 +1034,7 @@ function App() {
                 onlineUsers={onlineUsers}
                 openChatWindow={openChatWindow}
                 setOpenChatWindows={setOpenChatWindows}
-                // getGroups={getGroups}
+              
               />
             }
             exact
@@ -1339,7 +1053,7 @@ function App() {
                 onlineUsers={onlineUsers}
                 openChatWindow={openChatWindow}
                 setOpenChatWindows={setOpenChatWindows}
-                // getGroups={getGroups}
+              
               />
             }
             exact

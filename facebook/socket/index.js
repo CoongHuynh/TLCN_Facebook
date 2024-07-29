@@ -4,7 +4,7 @@ const httpServer = createServer();
 
 const io = new Server(httpServer, {
   cors: {
-    origin : '*',
+    origin: "*",
     methods: ["GET", "POST"],
   },
 });
@@ -29,7 +29,6 @@ io.on("connection", (socket) => {
     addNewUser(userId, socket.id);
     io.emit("getOnlineUsers", onlineUsers);
   });
-  console.log(onlineUsers);
   socket.on(
     "sendNotification",
     ({
@@ -66,7 +65,7 @@ io.on("connection", (socket) => {
       }
     }
   );
-  socket.on("sendMessage", ({ senderId, receiverId , roomId }) => {
+  socket.on("sendMessage", ({ senderId, receiverId, roomId }) => {
     const receiver = getUser(receiverId);
     if (receiver) {
       io.to(receiver.socketId).emit("getMessage", {
