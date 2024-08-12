@@ -23,8 +23,6 @@ export default function Comment({
   group,
   page,
   idgroup,
-  setReportGroup,
-  setReport,
 }) {
   const [isReplying, setIsReplying] = useState(false);
   const [comments, setComments] = useState([]);
@@ -252,8 +250,6 @@ export default function Comment({
                     idgroup={idgroup}
                     idcomment={comment._id}
                     idpost={post._id}
-                    setReportGroup={setReportGroup}
-                    setReport={setReport}
                   />
                 )}
               </>
@@ -382,8 +378,6 @@ export default function Comment({
                     group={group}
                     page={page}
                     idgroup={idgroup}
-                    setReportGroup={setReportGroup}
-                    setReport={setReport}
                   />
                 ))}
             {count < comments.length && (

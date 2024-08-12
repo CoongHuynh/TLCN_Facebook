@@ -120,31 +120,6 @@ exports.deletePost = async (req, res) => {
   }
 };
 
-// exports.getpostgroups = async (req, res) => {
-//   try {
-//     const groupTemp = await User.findById(req.user.id).select(
-//       "groups_following"
-//     );
-//     const groups_following = groupTemp.groups_following;
-//     const promisesGroup = groups_following.map((idgroup) => {
-//       return Post.find({ group: idgroup, st: null, type: { $ne: "pending" } })
-//         .populate("user", "first_name last_name picture id cover")
-//         .populate("group", "group_name cover id ")
-//         .sort({ createdAt: -1 })
-//         .limit(10);
-//     });
-//     const groups_followingPosts = await (
-//       await Promise.all(promisesGroup)
-//     ).flat();
-//     groups_followingPosts.sort((a, b) => {
-//       return b.createdAt - a.createdAt;
-//     });
-//     res.json(groups_followingPosts);
-//   } catch (error) {
-//     return res.status(500).json({ message: error.message });
-//   }
-// };
-
 exports.getPostByUrl = async (req, res) => {
   try {
     const { url } = req.body;

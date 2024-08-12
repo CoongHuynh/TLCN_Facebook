@@ -17,8 +17,7 @@ export default function PostMenu({
   postRef,
   postType,
   group,
-  setReport,
-  setReportGroup,
+
   groupId,
 }) {
   const [test, setTest] = useState(postUserId === userId ? true : false);
@@ -79,17 +78,7 @@ export default function PostMenu({
         </div>
       )}
       {!test && group.includes(postType) && (
-        <div
-          onClick={() =>
-            setReportGroup({
-              postId: postId,
-              groupId: groupId,
-              commentId: null,
-              userReportedRef: null,
-              groupReportedRef: null,
-            })
-          }
-        >
+        <div>
           <MenuItem
             icon="report_group_icon"
             title="Report post to group admins"
@@ -97,17 +86,7 @@ export default function PostMenu({
         </div>
       )}
       {!test && (
-        <div
-          onClick={() =>
-            setReport({
-              postId: postId,
-              groupId: groupId,
-              commentId: null,
-              userReportedRef: null,
-              groupReportedRef: null,
-            })
-          }
-        >
+        <div>
           <MenuItem
             img="../../../icons/report.png"
             title="Report post"

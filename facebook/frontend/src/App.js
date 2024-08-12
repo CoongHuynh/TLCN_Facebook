@@ -29,25 +29,14 @@ import Moment from "react-moment";
 import { setRead } from "./functions/notification";
 import { friendspage } from "./functions/reducers";
 import { getFriendsPageInfos } from "./functions/user";
-import PageGroup from "./pages/groups/PageGroup";
-import Groups from "./pages/groups";
-import { getGroupsJoined } from "./functions/user";
-import { getdiscoverGroups } from "./functions/user";
+
 import { roommess } from "./functions/reducers";
 import Room_Mess_screen from "./components/chat/RoomMess";
-import ReportMenu from "./components/reportMenu";
-import ReportGroupMenu from "./components/reportMenu/reportGroupMenu";
 import Messages from "./pages/messages";
 import { getUser } from "./functions/user";
 import PhotoDetail from "./components/photoDetail";
-import ReportMenu_Profile from "./components/reportMenu/reportProfile";
 import Verifi from "./pages/verify";
-import {
-  friendspageByBirthday,
-  groupspage,
-  groupdiscoverspage,
-  postgroups,
-} from "./functions/reducers";
+import { friendspageByBirthday } from "./functions/reducers";
 import { getFriendsByBirthday } from "./functions/user";
 import PhotoPopup from "./components/photoPopup";
 import Chat_screen from "./components/chat";
@@ -63,13 +52,7 @@ function App() {
   const { user, darkTheme } = useSelector((state) => ({ ...state }));
   const [api, contextHolder] = notification.useNotification();
   const [notifi, setNotifi] = useState(null);
-  const [report, setReport] = useState(null);
-  const [reportGroup, setReportGroup] = useState(null);
 
-  const [report_Profile, setReport_Profile] = useState(null);
-
-  const [reportComment, setReportComment] = useState(false);
-  const [reportGroupComment, setReportGroupComment] = useState(false);
   const [mess, setMess] = useState(null);
   const [loadingAllPosts, setLoadingAllPosts] = useState(false);
 
@@ -82,9 +65,6 @@ function App() {
       getAllPosts();
       getListPostSaved();
       getDataFriend();
-      // getGroups();
-      // getDiscoverGroups();
-      // getPostGroups();
       getRoomMess();
       getNotifications();
       getListMess();
@@ -278,16 +258,6 @@ function App() {
   });
   console.log(dataFriend);
 
-
-  const [
-    { loading: postGroupsLoading, error: postGroupsError, dataPostGroups },
-    dispatchPostGroups,
-  ] = useReducer(postgroups, {
-    loading: false,
-    dataPostGroups: [],
-    error: "",
-  });
-
   const [
     { loading: roomMessLoading, error: roomMessError, dataRoomMess },
     dispatchRoomMess,
@@ -316,7 +286,6 @@ function App() {
       });
     }
   };
-
 
   const getDataFriend = async () => {
     dispatchFriends({ type: "FRIENDS_REQUEST" });
@@ -506,8 +475,6 @@ function App() {
           visibleReactComment={visibleReactComment}
           setVisiblePhoto={setVisiblePhoto}
           page={visiblePost.page}
-          setReportGroup={setReportGroup}
-          setReport={setReport}
         />
       )}
       {visiblePhoto && (
@@ -557,24 +524,7 @@ function App() {
           )}
         </>
       )}
-      {report && <ReportMenu setReport={setReport} report={report} />}
-      {/* {reportGroup && (
-        <ReportGroupMenu
-          setReportGroup={setReportGroup}
-          reportGroup={reportGroup}
-        />
-      )} */}
-      {report_Profile && (
-        <ReportMenu_Profile
-          setReport_Profile={setReport_Profile}
-          report_Profile={report_Profile}
-        />
-      )}
 
-      {reportComment && <ReportMenu setReport={setReport} />}
-      {/* {reportGroupComment && (
-        <ReportGroupMenu setReportGroup={setReportGroup} />
-      )} */}
       {contextHolder}
 
       <Routes>
@@ -651,9 +601,6 @@ function App() {
                 onlineUsers={onlineUsers}
                 openChatWindow={openChatWindow}
                 setOpenChatWindows={setOpenChatWindows}
-                setReport_Profile={setReport_Profile}
-                setReportGroup={setReportGroup}
-                setReport={setReport}
               />
             }
             exact
@@ -686,9 +633,6 @@ function App() {
                 onlineUsers={onlineUsers}
                 openChatWindow={openChatWindow}
                 setOpenChatWindows={setOpenChatWindows}
-                setReport_Profile={setReport_Profile}
-                setReportGroup={setReportGroup}
-                setReport={setReport}
               />
             }
             exact
@@ -721,9 +665,6 @@ function App() {
                 onlineUsers={onlineUsers}
                 openChatWindow={openChatWindow}
                 setOpenChatWindows={setOpenChatWindows}
-                setReport_Profile={setReport_Profile}
-                setReportGroup={setReportGroup}
-                setReport={setReport}
               />
             }
             exact
@@ -756,9 +697,6 @@ function App() {
                 onlineUsers={onlineUsers}
                 openChatWindow={openChatWindow}
                 setOpenChatWindows={setOpenChatWindows}
-                setReport_Profile={setReport_Profile}
-                setReportGroup={setReportGroup}
-                setReport={setReport}
               />
             }
             exact
@@ -791,9 +729,6 @@ function App() {
                 onlineUsers={onlineUsers}
                 openChatWindow={openChatWindow}
                 setOpenChatWindows={setOpenChatWindows}
-                setReport_Profile={setReport_Profile}
-                setReportGroup={setReportGroup}
-                setReport={setReport}
               />
             }
             exact
@@ -826,9 +761,6 @@ function App() {
                 onlineUsers={onlineUsers}
                 openChatWindow={openChatWindow}
                 setOpenChatWindows={setOpenChatWindows}
-                setReport_Profile={setReport_Profile}
-                setReportGroup={setReportGroup}
-                setReport={setReport}
               />
             }
             exact
@@ -861,9 +793,6 @@ function App() {
                 onlineUsers={onlineUsers}
                 openChatWindow={openChatWindow}
                 setOpenChatWindows={setOpenChatWindows}
-                setReport_Profile={setReport_Profile}
-                setReportGroup={setReportGroup}
-                setReport={setReport}
               />
             }
             exact
@@ -896,9 +825,6 @@ function App() {
                 onlineUsers={onlineUsers}
                 openChatWindow={openChatWindow}
                 setOpenChatWindows={setOpenChatWindows}
-                setReport_Profile={setReport_Profile}
-                setReportGroup={setReportGroup}
-                setReport={setReport}
               />
             }
             exact
@@ -947,15 +873,12 @@ function App() {
                 openChatWindow={openChatWindow}
                 setOpenChatWindows={setOpenChatWindows}
                 listPostSaved={listPostSaved}
-                postGroupsLoading={postGroupsLoading}
                 setVisiblePost={setVisiblePost}
                 visibleReact={visibleReact}
                 setVisibleReact={setVisibleReact}
                 setVisibleReactComment={setVisibleReactComment}
                 visibleReactComment={visibleReactComment}
                 setVisiblePhoto={setVisiblePhoto}
-                setReportGroup={setReportGroup}
-                setReport={setReport}
                 getListPostSaved={getListPostSaved}
               />
             }
@@ -984,7 +907,7 @@ function App() {
             }
             exact
           />
-        
+
           <Route
             path="/"
             element={
@@ -1009,8 +932,6 @@ function App() {
                 setVisiblePhoto={setVisiblePhoto}
                 dataRoomMess={dataRoomMess}
                 onlineUsers={onlineUsers}
-                setReport={setReport}
-                setReportGroup={setReportGroup}
                 loadingListMess={loadingListMess}
                 getListMess={getListMess}
                 listMess={listMess}
@@ -1034,7 +955,6 @@ function App() {
                 onlineUsers={onlineUsers}
                 openChatWindow={openChatWindow}
                 setOpenChatWindows={setOpenChatWindows}
-              
               />
             }
             exact
@@ -1053,7 +973,6 @@ function App() {
                 onlineUsers={onlineUsers}
                 openChatWindow={openChatWindow}
                 setOpenChatWindows={setOpenChatWindows}
-              
               />
             }
             exact

@@ -22,8 +22,6 @@ export default function Post_detail({
   visibleReactComment,
   setVisiblePhoto,
   page,
-  setReportGroup,
-  setReport
 }) {
   const [visible, setVisible] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
@@ -53,7 +51,6 @@ export default function Post_detail({
     // Gọi phương thức focus() trên đối tượng DOM của input
     textRef.current.focus();
   };
-
 
   const getCountCommentPost = async () => {
     const res = await getCountCommentInPost(post._id, user.token);
@@ -478,8 +475,6 @@ export default function Post_detail({
                         setVisibleReactComment={setVisibleReactComment}
                         visibleReactComment={visibleReactComment}
                         idgroup={post?.group?._id}
-                        setReportGroup={setReportGroup}
-                        setReport={setReport}
                       />
                     ))}
               </>

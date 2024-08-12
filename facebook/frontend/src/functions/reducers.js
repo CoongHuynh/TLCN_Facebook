@@ -135,91 +135,6 @@ export function friendspage(state, action) {
   }
 }
 
-// export function groupspage(state, action) {
-//   switch (action.type) {
-//     case "GROUPS_REQUEST":
-//       return { ...state, loading: true, error: "" };
-//     case "GROUPS_SUCCESS":
-//       return {
-//         ...state,
-//         loading: false,
-//         dataGroups: action.payload,
-//         error: "",
-//       };
-//     case "GROUPS_ERROR":
-//       return { ...state, loading: false, error: action.payload };
-
-//     default:
-//       return state;
-//   }
-// }
-
-export function groupdiscoverspage(state, action) {
-  switch (action.type) {
-    case "DISCOVER_GROUPS_REQUEST":
-      return { ...state, loading: true, error: "" };
-    case "DISCOVER_GROUPS_SUCCESS":
-      return {
-        ...state,
-        loading: false,
-        dataDiscoverGroups: action.payload,
-        error: "",
-      };
-    case "DISCOVER_GROUPS_ERROR":
-      return { ...state, loading: false, error: action.payload };
-
-    default:
-      return state;
-  }
-}
-
-export function postgroups(state, action) {
-  switch (action.type) {
-    case "POST_GROUPS_REQUEST":
-      return { ...state, loading: true, error: "" };
-    case "POST_GROUPS_SUCCESS":
-      return {
-        ...state,
-        loading: false,
-        dataPostGroups: action.payload,
-        error: "",
-      };
-    case "POST_GROUPS_ERROR":
-      return { ...state, loading: false, error: action.payload };
-
-    default:
-      return state;
-  }
-}
-
-export function pagegroup(state, action) {
-  switch (action.type) {
-    case "PAGEGROUP_REQUEST":
-      return { ...state, loading: true, error: "" };
-    case "PAGEGROUP_SUCCESS":
-      return {
-        ...state,
-        loading: false,
-        dataPageGroup: action.payload,
-        error: "",
-      };
-    case "PAGEGROUP_POSTS":
-      return {
-        loading: false,
-        dataPageGroup: {
-          ...state.dataPageGroup,
-          posts: action.payload,
-        },
-        error: "",
-      };
-    case "PAGEGROUP_ERROR":
-      return { ...state, loading: false, error: action.payload };
-
-    default:
-      return state;
-  }
-}
-
 export function roommess(state, action) {
   switch (action.type) {
     case "ROOM_MESS_REQUEST":
@@ -233,29 +148,6 @@ export function roommess(state, action) {
       };
     case "ROOM_MESS_ERROR":
       return { ...state, loading: false, error: action.payload };
-
-    default:
-      return state;
-  }
-}
-
-export function submitReportToGroupReducer(state, action) {
-  switch (action.type) {
-    case "SUBMIT_REPORT_GROUP_REQUEST":
-      return { ...state, loadingReportToGroup: true, errorReportToGroup: "" };
-    case "SUBMIT_REPORT_GROUP_SUCCESS":
-      return {
-        ...state,
-        loadingReportToGroup: false,
-        reportToGroup: action.payload,
-        errerrorReportToGroupor: "",
-      };
-    case "SUBMIT_REPORT_GROUP_ERROR":
-      return {
-        ...state,
-        loadingReportToGroup: false,
-        errorReportToGroup: action.payload,
-      };
 
     default:
       return state;

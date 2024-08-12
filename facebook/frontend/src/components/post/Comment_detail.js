@@ -22,8 +22,6 @@ export default function Comment_detail({
   setVisibleReactComment,
   group,
   idgroup,
-  setReportGroup,
-  setReport,
 }) {
   const [isReplying, setIsReplying] = useState(false);
   const [comments, setComments] = useState([]);
@@ -269,10 +267,8 @@ export default function Comment_detail({
                 {showMenuComment && (
                   <CommentMenu
                     idgroup={idgroup}
-                    setReportGroup={setReportGroup}
                     idcomment={comment._id}
                     idpost={post._id}
-                    setReport={setReport}
                   />
                 )}
               </>
@@ -394,7 +390,6 @@ export default function Comment_detail({
                     commentId={visiblePost?.commentId}
                     setVisibleReactComment={setVisibleReactComment}
                     idgroup={idgroup}
-                    setReportGroup={setReportGroup}
                   />
                 ))}
           </>

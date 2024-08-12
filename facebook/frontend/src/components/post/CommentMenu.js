@@ -9,9 +9,7 @@ export default function CommentMenu({
   setShowMenu,
   token,
   idgroup,
-  setReportGroup,
-  setReport,
-  reportGroup,
+
   idcomment,
   idpost,
 }) {
@@ -23,34 +21,14 @@ export default function CommentMenu({
       {idgroup && (
         <>
           {" "}
-          <div
-            onClick={() =>
-              setReportGroup({
-                postId: idpost,
-                groupId: idgroup,
-                commentId: idcomment,
-                userReportedRef: null,
-                groupReportedRef: null,
-              })
-            }
-          >
+          <div>
             <MenuItem title="Report comment to group admins" />
           </div>
           <div className="line"></div>
         </>
       )}
 
-      <div
-        onClick={() =>
-          setReport({
-            postId: idpost,
-            groupId: null,
-            commentId: idcomment,
-            userReportedRef: null,
-            groupReportedRef: null,
-          })
-        }
-      >
+      <div>
         <MenuItem title="Report comment" />
       </div>
     </ul>

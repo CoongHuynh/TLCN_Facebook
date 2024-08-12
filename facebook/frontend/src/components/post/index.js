@@ -25,8 +25,6 @@ export default function Post({
   visibleReactComment,
   setVisiblePhoto,
   page,
-  setReport,
-  setReportGroup,
 }) {
   const [visible, setVisible] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
@@ -462,8 +460,6 @@ export default function Post({
                     visibleReactComment={visibleReactComment}
                     page={page}
                     idgroup={post?.group?._id}
-                    setReportGroup={setReportGroup}
-                    setReport={setReport}
                   />
                 ))}
             {count < comments.length && (
@@ -488,8 +484,6 @@ export default function Post({
           postRef={postRef}
           postType={post.type}
           group={group}
-          setReport={setReport}
-          setReportGroup={setReportGroup}
           groupId={post?.group?._id}
         />
       )}
